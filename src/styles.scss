@@ -9,29 +9,53 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$angular-material-primary: mat.define-palette(mat.$purple-palette);
-$angular-material-accent: mat.define-palette(mat.$green-palette, A200, A100, A400);
+$mat-custom-primary: (
+  50 : #f4e9ef,
+  100 : #e3c8d6,
+  200 : #d0a3bb,
+  300 : #bd7e9f,
+  400 : #af638b,
+  500 : #a14776,
+  600 : #99406e,
+  700 : #8f3763,
+  800 : #852f59,
+  900 : #742046,
+  A100 : #ffb3d3,
+  A200 : #ff80b6,
+  A400 : #ff4d99,
+  A700 : #ff338a,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #ffffff,
+  )
+);
 
-// The warn palette is optional (defaults to red).
-$angular-material-warn: mat.define-palette(mat.$red-palette);
+// Define the custom palettes.
+$custom-primary: mat.define-palette($mat-custom-primary);
+$custom-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-// $angular-material-theme: mat.define-light-theme((
-$angular-material-theme: mat.define-dark-theme((
+// Define the theme object.
+$custom-theme: mat.define-light-theme((
   color: (
-    primary: $angular-material-primary,
-    accent: $angular-material-accent,
+    primary: $custom-primary,
+    accent: $custom-accent,
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($angular-material-theme);
+// Include the theme styles for Angular Material components.
+@include mat.all-component-themes($custom-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
